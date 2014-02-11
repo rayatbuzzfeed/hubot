@@ -29,7 +29,7 @@ facts = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /ramones fact/i, (msg) ->
+  robot.hear /ramones/i, (msg) ->
     msg.send msg.random facts
 
 
