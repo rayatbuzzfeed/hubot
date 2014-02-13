@@ -18,6 +18,9 @@ module.exports = (robot) ->
   robot.respond /realtime$/i, (msg) ->
     gaCallback msg, "buzzfeed"
 
+  robot.hear /buzzfeed .* users$/i, (msg) ->
+    gaCallback msg, "buzzfeed"
+
 
 gaCallback = (msg, query) ->
   return msg.send("HUBOT_BUZZFEED_GA_URL needs to be set") if not env.HUBOT_BUZZFEED_GA_URL 
