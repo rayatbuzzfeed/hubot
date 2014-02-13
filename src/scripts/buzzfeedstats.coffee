@@ -20,6 +20,8 @@ module.exports = (robot) ->
 
 
 gaCallback = (msg, query) ->
+  return msg.send("HUBOT_BUZZFEED_GA_URL needs to be set") if not env.HUBOT_BUZZFEED_GA_URL 
+
   msg.http(gaUrl)
     .get() (err, res, body) ->
        results = JSON.parse(body)
