@@ -1,9 +1,15 @@
 # Description:
 #   return a buzzfeed realtime stats
 #
+# Configuration:
+#   HUBOT_BUZZFEED_GA_URL - ga url
+#
 # Commands:
 #   hubot realtime <query> - return a google analytics stats for query
 #
+env = process.env
+
+gaUrl = process.env.HUBOT_BUZZFEED_GA_URL
 
 module.exports = (robot) ->
   robot.respond /realtime? (.*)/i, (msg) ->
@@ -14,7 +20,7 @@ module.exports = (robot) ->
 
 
 gaCallback = (msg, query) ->
-  msg.http('http://nagios.buzzfeed.com/cgi-bin/stats-ga')
+  msg.http(gaUrl)
     .get() (err, res, body) ->
        results = JSON.parse(body)
        if results?.length > 0
