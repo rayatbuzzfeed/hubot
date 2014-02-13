@@ -18,7 +18,7 @@ module.exports = (robot) ->
   robot.respond /realtime$/i, (msg) ->
     gaCallback msg, "buzzfeed"
 
-  robot.hear /buzzfeed .* (users|viewers)$/i, (msg) ->
+  robot.hear /buzzfeed .* (users|viewers)/i, (msg) ->
     gaCallback msg, "buzzfeed"
 
 
